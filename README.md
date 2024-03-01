@@ -27,4 +27,4 @@ array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]);
 
 ## License
 
-The QR Images is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Array Flatten is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
