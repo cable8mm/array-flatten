@@ -90,3 +90,6 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/composer,macos,windows,visualstudiocode
 
 composer.lock
+/build
+/cache
+/doctum.php

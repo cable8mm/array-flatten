@@ -1,14 +1,16 @@
 # Array Flatten
 
-[![Tests](https://github.com/cable8mm/array-flatten/actions/workflows/tests.yml/badge.svg)](https://github.com/cable8mm/array-flatten/actions/workflows/tests.yml)
-[![PHP Linting (Pint)](https://github.com/cable8mm/array-flatten/actions/workflows/coding-style-php.yml/badge.svg)](https://github.com/cable8mm/array-flatten/actions/workflows/coding-style-php.yml)
-[![Latest Stable Version](http://poser.pugx.org/cable8mm/array-flatten/v)](https://packagist.org/packages/cable8mm/array-flatten)
-[![Total Downloads](http://poser.pugx.org/cable8mm/array-flatten/downloads)](https://packagist.org/packages/cable8mm/array-flatten)
-[![release date](https://img.shields.io/github/release-date/cable8mm/array-flatten)](https://github.com/cable8mm/array-flatten/releases)
-![GitHub License](https://img.shields.io/github/license/cable8mm/array-flatten)
-[![PHP Version Require](http://poser.pugx.org/cable8mm/array-flatten/require/php)](https://packagist.org/packages/cable8mm/array-flatten)
+[![code-style](https://github.com/cable8mm/array-flatten/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/array-flatten/actions/workflows/code-style.yml)
+[![run-tests](https://github.com/cable8mm/array-flatten/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/array-flatten/actions/workflows/run-tests.yml)
+![Packagist Version](https://img.shields.io/packagist/v/cable8mm/array-flatten)
+![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/array-flatten)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/array-flatten/php)
+![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/array-flatten)
+![Packagist License](https://img.shields.io/packagist/l/cable8mm/array-flatten)
 
-> Flatten nested arrays.
+Flatten nested arrays.
+
+We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/array-flatten/ ❤️
 
 ## Installation
 
