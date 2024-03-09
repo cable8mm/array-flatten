@@ -30,12 +30,10 @@
         "laravel/pint": "^1.0"
     },
     "scripts": {
-        "test": [
-            "./vendor/bin/phpunit"
-        ],
-        "lint": [
-            "./vendor/bin/pint"
-        ]
+        "test": "./vendor/bin/phpunit tests",
+        "lint": "./vendor/bin/pint",
+        "inspect": "./vendor/bin/pint --test",
+        "apidoc": "doctum.phar update doctum.php --output-format=github --no-ansi --no-progress"
     },
     "minimum-stability": "stable",
     "prefer-stable": true
