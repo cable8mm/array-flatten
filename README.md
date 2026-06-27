@@ -10,7 +10,7 @@
 
 Flatten nested arrays.
 
-We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/array-flatten/ ❤️
+`array_flatten()` flattens nested arrays and keeps the first occurrence of each scalar value. For more information, please visit <https://www.palgle.com/array-flatten/> ❤️
 
 ## Installation
 
@@ -27,6 +27,12 @@ array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]);
 //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
+## Behavior
+
+- Preserves the order of first appearance.
+- Removes duplicate scalar values using strict comparison.
+- Flattens nested arrays of any depth.
+
 ## License
 
-The Array Flatten is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Array Flatten is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

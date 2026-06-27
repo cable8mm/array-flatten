@@ -3,10 +3,10 @@
 namespace Cable8mm\ArrayFlatten;
 
 /**
- * Flatten nested arrays.  * array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]); //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+ * Flatten nested arrays and keep the first occurrence of each scalar value.
  *
- * @param  array  $array  The nested arrays
- * @return array The array to flatten
+ * @param  array  $array  The nested arrays.
+ * @return array The flattened array.
  *
  * @example array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]);
  * //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -15,51 +15,30 @@ function array_flatten(array $array): array
 {
     $return = [];
 
-    array_walk_recursive($array, function ($a) use (&$return) {
-        $return[] = $a;
-    });
+    flatten_array($array, $return);
 
-    return array_raw_unique($return);
+    return $return;
 }
 
 /**
- * Extend array_unique() to include null and space values. array_raw_unique([1, 2, 2, null, null, '', '', 9]); //=> [1, 2, null, '', '', 9]
+ * Recursively flatten an array while preserving the first occurrence order.
  *
- * @param  array  $array  The array
- * @return array The unique array even if it contains null and space values
+ * @param  array  $array  The array to flatten.
+ * @param  array<int, mixed>  $return  The flattened output.
  *
- * @example array_raw_unique([1, 2, 2, null, null, '', '', 9]);
- * //=> [1, 2, null, '', '', 9]
+ * @return void
  */
-function array_raw_unique(array $array): array
+function flatten_array(array $array, array &$return): void
 {
-    $out = [];
-
-    $count = count($array);
-
-    for ($i = 0; $i < $count; $i++) {
-        $item = array_shift($array);
-
-        if (count($out) === 0) {
-            $out[] = $item;
+    foreach ($array as $value) {
+        if (is_array($value)) {
+            flatten_array($value, $return);
 
             continue;
         }
 
-        $isDuplicate = false;
-
-        foreach ($out as $o) {
-            if ($o === $item) {
-                $isDuplicate = true;
-
-                break;
-            }
-        }
-
-        if (! $isDuplicate) {
-            $out[] = $item;
+        if (! in_array($value, $return, true)) {
+            $return[] = $value;
         }
     }
-
-    return $out;
 }
