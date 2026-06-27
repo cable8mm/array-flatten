@@ -10,7 +10,7 @@
 
 Flatten nested arrays.
 
-`array_flatten()` flattens nested arrays and keeps the first occurrence of each scalar value. For more information, please visit <https://www.palgle.com/array-flatten/> ❤️
+`array_flatten()` flattens nested arrays and removes duplicate scalar values using strict comparison. For more information, please visit <https://www.palgle.com/array-flatten/> ❤️
 
 ## Installation
 

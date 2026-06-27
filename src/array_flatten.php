@@ -3,7 +3,7 @@
 namespace Cable8mm\ArrayFlatten;
 
 /**
- * Flatten nested arrays and keep the first occurrence of each scalar value.
+ * Flatten nested arrays and deduplicate scalar values by strict comparison.
  *
  * @param  array  $array  The nested arrays.
  * @return array The flattened array.
