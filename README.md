@@ -8,9 +8,13 @@
 ![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/array-flatten)
 ![Packagist License](https://img.shields.io/packagist/l/cable8mm/array-flatten)
 
-Flatten nested arrays.
+Normalize nested arrays.
 
-We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/array-flatten/ ❤️
+`array_flatten()` returns a flat list from nested arrays and removes duplicate scalar values using strict comparison. For more information, please visit <https://www.palgle.com/array-flatten/>.
+
+## Why
+
+To normalize nested arrays into a flat list while preserving first-seen order and strict uniqueness.
 
 ## Installation
 
@@ -27,6 +31,12 @@ array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]);
 //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
+## Behavior
+
+- Preserves first-seen order.
+- Applies strict deduplication to scalar values.
+- Traverses nested arrays at any depth.
+
 ## License
 
-The Array Flatten is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Array Flatten is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

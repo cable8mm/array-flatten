@@ -3,10 +3,10 @@
 namespace Cable8mm\ArrayFlatten;
 
 /**
- * Flatten nested arrays.  * array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]); //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+ * Flatten nested arrays and deduplicate scalar values by strict comparison.
  *
- * @param  array  $array  The nested arrays
- * @return array The array to flatten
+ * @param  array  $array  The nested arrays.
+ * @return array The flattened array.
  *
  * @example array_flatten([1, [2, [3, [4, [5], 6], 7], 8], 9]);
  * //=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -14,52 +14,26 @@ namespace Cable8mm\ArrayFlatten;
 function array_flatten(array $array): array
 {
     $return = [];
+    $seen = [];
 
-    array_walk_recursive($array, function ($a) use (&$return) {
-        $return[] = $a;
+    array_walk_recursive($array, function ($value) use (&$return, &$seen): void {
+        if ($value === null) {
+            $key = 'null';
+        } elseif (is_bool($value)) {
+            $key = $value ? 'bool:1' : 'bool:0';
+        } elseif (is_int($value)) {
+            $key = 'int:'.$value;
+        } elseif (is_float($value)) {
+            $key = 'float:'.sprintf('%.17F', $value);
+        } else {
+            $key = 'string:'.$value;
+        }
+
+        if (! array_key_exists($key, $seen)) {
+            $seen[$key] = true;
+            $return[] = $value;
+        }
     });
 
-    return array_raw_unique($return);
-}
-
-/**
- * Extend array_unique() to include null and space values. array_raw_unique([1, 2, 2, null, null, '', '', 9]); //=> [1, 2, null, '', '', 9]
- *
- * @param  array  $array  The array
- * @return array The unique array even if it contains null and space values
- *
- * @example array_raw_unique([1, 2, 2, null, null, '', '', 9]);
- * //=> [1, 2, null, '', '', 9]
- */
-function array_raw_unique(array $array): array
-{
-    $out = [];
-
-    $count = count($array);
-
-    for ($i = 0; $i < $count; $i++) {
-        $item = array_shift($array);
-
-        if (count($out) === 0) {
-            $out[] = $item;
-
-            continue;
-        }
-
-        $isDuplicate = false;
-
-        foreach ($out as $o) {
-            if ($o === $item) {
-                $isDuplicate = true;
-
-                break;
-            }
-        }
-
-        if (! $isDuplicate) {
-            $out[] = $item;
-        }
-    }
-
-    return $out;
+    return $return;
 }
