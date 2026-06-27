@@ -14,31 +14,26 @@ namespace Cable8mm\ArrayFlatten;
 function array_flatten(array $array): array
 {
     $return = [];
+    $seen = [];
 
-    flatten_array($array, $return);
-
-    return $return;
-}
-
-/**
- * Recursively flatten an array while preserving the first occurrence order.
- *
- * @param  array  $array  The array to flatten.
- * @param  array<int, mixed>  $return  The flattened output.
- *
- * @return void
- */
-function flatten_array(array $array, array &$return): void
-{
-    foreach ($array as $value) {
-        if (is_array($value)) {
-            flatten_array($value, $return);
-
-            continue;
+    array_walk_recursive($array, function ($value) use (&$return, &$seen): void {
+        if ($value === null) {
+            $key = 'null';
+        } elseif (is_bool($value)) {
+            $key = $value ? 'bool:1' : 'bool:0';
+        } elseif (is_int($value)) {
+            $key = 'int:'.$value;
+        } elseif (is_float($value)) {
+            $key = 'float:'.sprintf('%.17F', $value);
+        } else {
+            $key = 'string:'.$value;
         }
 
-        if (! in_array($value, $return, true)) {
+        if (! array_key_exists($key, $seen)) {
+            $seen[$key] = true;
             $return[] = $value;
         }
-    }
+    });
+
+    return $return;
 }

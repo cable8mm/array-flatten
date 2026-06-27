@@ -15,6 +15,16 @@ final class ArrayFlattenTest extends TestCase
                 'input' => [1, [2, [3, [4, [5], 6], 7], 8], 9],
                 'expected' => [1, 2, 3, 4, 5, 6, 7, 8, 9],
             ],
+            'keeps the first occurrence only' => [
+                'input' => [
+                    1,
+                    [1, 2],
+                    ['nested' => [2, 3]],
+                    [3, ['deep' => 1]],
+                    4,
+                ],
+                'expected' => [1, 2, 3, 4],
+            ],
             'flattens empty arrays' => [
                 'input' => [[], []],
                 'expected' => [],
