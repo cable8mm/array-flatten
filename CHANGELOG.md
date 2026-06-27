@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.1.0 - 2026-06-27
+
+### What's Changed
+
+* refactoring: sources, tests and docs by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/array-flatten/pull/5
+
+**Full Changelog**: https://github.com/cable8mm/array-flatten/compare/v1.0.1...v1.1.0
+
 ## v1.0.1 - 2024-03-09
 
 ### What's Changed
